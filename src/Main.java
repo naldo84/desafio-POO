@@ -4,27 +4,26 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Curso cursoJava = new Curso();
-        cursoJava.setTitulo("Curso de Java");
-        cursoJava.setDescricao("Descrição do curso de java completo.");
-        cursoJava.setCargaHoraria(8);
+        Curso cursoJava = new Curso("Curso de Java", "Descrição do curso de Java", 8);
 
-        Curso cursoPython= new Curso();
-        cursoPython.setTitulo("Curso de Python");
-        cursoPython.setDescricao("Descrição do curso de Python completo.");
-        cursoPython.setCargaHoraria(4);
+        Professor professor1 = new Professor("Prof Piton Rastejante", "1122334455");
+        professor1.consultarMaterias();
 
-        Mentoria mentoriaJava = new Mentoria();
-        mentoriaJava.setTitulo("Mentoria de Java");
-        mentoriaJava.setDescricao("Mentoria do curso de Java");
-        mentoriaJava.setData(LocalDate.of(2024, 02,01));
+        Curso cursoPython = new Curso("Curso de Python", "Descricao do curso de Python", 4, professor1);
+        professor1.consultarMaterias();
 
-        Mentoria mentoriaPython = new Mentoria();
-        mentoriaPython.setTitulo("Mentoria de Python");
-        mentoriaPython.setDescricao("Mentoria do curso de Python");
-        mentoriaPython.setData(LocalDate.of(2024, 02,01));
+        System.out.println("\nIncluindo mais de uma matéria e consultando as matérias do professor");
+        professor1.incluirMaterias(cursoJava);
+        professor1.consultarMaterias();
 
-        Curso cursoJavaScript = new Curso();
+
+        Mentoria mentoriaJava = new Mentoria("Mentoria de Java", "Mentoria do Curso de Java", LocalDate.of(2024, 02,01));
+
+        Mentoria mentoriaPython = new Mentoria("Mentoria de Python", "Mentoria do Curso de Python", LocalDate.now(), professor1);
+
+        System.out.println("Detalhes do curso: " + cursoPython);
+
+/*        Curso cursoJavaScript = new Curso();
         cursoJavaScript.setTitulo("Curso de Java Script");
         cursoJavaScript.setDescricao("Descrição do curos de Java Script");
         cursoJavaScript.setCargaHoraria(70);
@@ -32,7 +31,7 @@ public class Main {
         Mentoria mentoriaJavaScript = new Mentoria();
         mentoriaJavaScript.setTitulo("Curso de Java Script");
         mentoriaJavaScript.setDescricao("Descrição do curos de Java Script");
-        mentoriaJavaScript.setData(LocalDate.now());
+        mentoriaJavaScript.setData(LocalDate.now());*/
 
 
 /*        System.out.println(cursoJava);
@@ -45,8 +44,9 @@ public class Main {
         bootcamp1.setNome("Bootcamp Java Developer");
         bootcamp1.setDescricao("Descrição do Bootcamp Java Developer");
         bootcamp1.getConteudos().add(cursoJava);
-        bootcamp1.getConteudos().add(cursoJavaScript);
-        bootcamp1.getConteudos().add(mentoriaJava);
+
+   /*     bootcamp1.getConteudos().add(cursoJavaScript);
+        bootcamp1.getConteudos().add(mentoriaJava);*/
 
         //bootcamp1.getConteudos().add(mentoriaJavaScript);
 
@@ -66,14 +66,15 @@ public class Main {
         System.out.println("XP: " + devNaldo.calcularTotalXp());
 
 
-        System.out.println("\n-----------------");
+        System.out.println("\n----------------- Vete");
         Dev devVete = new Dev();
         devVete.setNome("Vete");
         devVete.inscreverBootcampo(bootcamp1);
         System.out.println("Conteúdos inscritos: " + devVete.getConteudosInscritos());
-        devVete.progredir();
+
 
         System.out.println("Depois da progressão");
+        devVete.progredir();
         System.out.println("Conteúdos inscritos: " + devVete.getConteudosInscritos());
         System.out.println("Conteúdos concluidos: " + devVete.getConteudosConcluidos());
     }

@@ -5,22 +5,26 @@ public abstract class Conteudo {
 
     private String titulo;
     private String descricao;
+    private Professor professor;
 
     public abstract double calcularXp();
+
+    public Conteudo(String titulo, String descricao) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }
+
+    public Conteudo(String titulo, String descricao, Professor professor) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.professor = professor;
+    }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 }

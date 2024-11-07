@@ -3,6 +3,23 @@ package com.br.dio.desafio.dominio;
 public class Curso extends Conteudo{
 
     private int cargaHoraria;
+    private Professor professor;
+
+    public Curso(String titulo, String descricao, int cargaHoraria) {
+        super(titulo, descricao);
+        this.cargaHoraria = cargaHoraria;
+
+    }
+
+    public Curso(String titulo, String descricao, int cargaHoraria, Professor professor) {
+        super(titulo, descricao, professor);
+        this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
+
+        if (professor != null){
+            professor.incluirMaterias(this);
+        }
+    }
 
     @Override
     public double calcularXp() {
@@ -23,6 +40,11 @@ public class Curso extends Conteudo{
                 "titulo: '" + getTitulo()  + '\'' +
                 ", descricao: '" + getDescricao() + '\'' +
                 ", cargaHoraria: " + cargaHoraria +
+                ", XP: " + calcularXp() +
+                ", professor: " + (professor != null ? professor.getNome() : "Sem professor") + '\'' +
+
                 '}';
     }
+
+
 }
